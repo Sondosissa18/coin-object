@@ -20,6 +20,11 @@ const coin = {
   },
   toHTML: function() {
     const image = document.createElement("img");
+    if (this.state === 0) {
+      image.src = "./img/head.png";
+    } else {
+      image.src = "./img/tail.jpg";
+    }
     // 3. One point: Set the properties of this image element to show either face-up
     //    or face-down, depending on whether this.state is 0 or 1.
     return image;
@@ -41,7 +46,25 @@ function display20Flips() {
 }
 function display20Images() {
   const results = [];
+
   // 5. One point: Use a loop to flip the coin 20 times, and display the results of each flip as an image on the page.  After your loop completes, return an array with result of each flip.
+  for (flip = 0; flip < 20; flip++) {
+    coin.flip();
+    let image = coin.toHTML();
+    document.body.appendChild(image);
+  }
+
+  return results;
 }
 
 display20Flips();
+display20Images();
+// const headImage = document.createElement("img");
+//     headImage.src = "./img/head.png";
+//     document.body.appendChild(headImage);
+//     results.push(coin.toString());
+
+//     const tailImage = document.createElement("img");
+//     tailImage.src = "./img/tail.jpg";
+//     document.body.appendChild(tailImage);
+//     results.push(coin.toString());
